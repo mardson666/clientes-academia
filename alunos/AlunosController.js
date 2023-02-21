@@ -9,24 +9,49 @@ router.get("/principal/alunos",(req,res)=>{
     })
 })
 router.post("/principal/cad", (req,res)=>{
+    //requisições do body(formulario)
     var nome = req.body.nome;
     var cpf = req.body.cpf;
     var numero = req.body.numero;
-    var idade = req.body.idade;
     var altura = req.body.altura;
     var peso = req.body.peso;
     var status = req.body.status;
-    var imc = req.body.imc;
     var data_nasci = req.body.data_nasci;
     var email = req.body.email;
-
+    //formatar data para br
+    var data = new Date(data_nasci);
+    var dia = data.getDate();
+    dia = dia + 1;
+    var mes = data.getMonth();
+    mes = mes + 1;
+    var ano = data.getFullYear();
+    //data formatada
+    var data_nasci_formated = dia+"/"+mes+"/"+ano;
+    console.log(data_nasci_formated)
+    //calculo de idade(não exata por enquanto)
+    var data_atual = new Date()
+    data_atual = data_atual.getFullYear()
+    var idade_atual =  data_atual - ano 
+    //calculo de imc
+    var imc = peso / (altura * altura)
+    //colocar hifen no numero
+    var parte1 = numero.slice(0,5)
+    var parte2 = numero.slice(5,9)
+    var numeroAjustado = `${parte1}-${parte2}`
+    console.log(idade_atual)
+    //colocar ponto e hifen no cpf  
+    parte1 = cpf.slice(0,3)
+    parte2 = cpf.slice(3,6)
+    parte3 = cpf.slice(6,9)
+    parte4 = cpf.slice(9.11)
+    var cpfAjustado = `${parte1}.${parte2}.${parte3}-${parte4}`
     Aluno.create({
-        cpf:cpf,
+        cpf:cpfAjustado,
         nome:nome,
         email:email,
-        numero:numero,
-        data_nasci:data_nasci,
-        idade:idade,
+        numero:numeroAjustado,
+        data_nasci:data_nasci_formated,
+        idade:idade_atual,
         altura:altura,
         peso:peso,
         imc:imc,
@@ -63,20 +88,45 @@ router.get('/principal/edit/:id', (req,res)=>{
     })
 })
 router.post('/principal/upadate', (req,res)=>{
+    //requisições do body(formulario)
     var id = req.body.id;
     var nome = req.body.nome;
     var cpf = req.body.cpf;
     var numero = req.body.numero;
-    var idade = req.body.idade;
     var altura = req.body.altura;
     var peso = req.body.peso;
     var status = req.body.status;
-    var imc = req.body.imc;
     var data_nasci = req.body.data_nasci;
     var email = req.body.email;
+    //formatar data para br
+    var data = new Date(data_nasci);
+    var dia = data.getDate();
+    dia = dia + 1;
+    var mes = data.getMonth();
+    mes = mes + 1;
+    var ano = data.getFullYear();
+    //data formatada
+    var data_nasci_formated = dia+"/"+mes+"/"+ano;
+    //calculo de idade(não exata por enquanto)
+    var data_atual = new Date()
+    data_atual = data_atual.getFullYear()
+    var idade_atual =  data_atual - ano 
+    //calculo de imc
+    var imc = peso / (altura * altura)
+    //colocar hifen no numero
+    var parte1 = numero.slice(0,5)
+    var parte2 = numero.slice(5,9)
+    var numeroAjustado = `${parte1}-${parte2}`
+    console.log(idade_atual)
+    //colocar ponto e hifen no cpf  
+    parte1 = cpf.slice(0,3)
+    parte2 = cpf.slice(3,6)
+    parte3 = cpf.slice(6,9)
+    parte4 = cpf.slice(9.11)
+    var cpfAjustado = `${parte1}.${parte2}.${parte3}-${parte4}`
     
-    Aluno.update({cpf:cpf, nome:nome, email:email, numero:numero, data_nasci:data_nasci
-        , idade:idade, altura:altura, peso:peso, imc:imc, status:status
+    Aluno.update({cpf:cpfAjustado, nome:nome, email:email, numero:numeroAjustado, data_nasci:data_nasci_formated
+        , idade:idade_atual, altura:altura, peso:peso, imc:imc, status:status
     },{
         where:{
             id:id

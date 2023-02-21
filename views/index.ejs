@@ -1,0 +1,67 @@
+<%- include('./partials/header.ejs')%>
+<h1>
+    PAGINA PRINCIPAL
+    
+</h1>
+<hr>
+<input type="button" id="togle" onclick="sumir()" value="cadastrar">
+<table class="all" id="tableall" >
+    <tr>
+      <th>Id</th>
+      <th>Nome</th>
+      <th>CPF</th>
+      <th>Numero</th>
+      <th>Peso</th>
+      <th>Altura</th>
+      <th>imc</th>
+      <th>Idade</th>
+      <th>Data de nascimento</th>
+      <th>status</th>
+      <th>opção</th>
+    </tr><br>
+    <% alunos.forEach(alunos =>{ %>
+    <tr>
+        
+        <td ><%= alunos.id %></td>
+        <td><%= alunos.nome %></td>
+        <td><%= alunos.cpf %></td>
+        <td><%= alunos.numero %></td>
+        <td><%= alunos.peso %></td>
+        <td><%= alunos.altura %></td>
+        <td><%= alunos.imc %></td>
+        <td><%= alunos.idade %></td>
+        <td><%= alunos.data_nasci %></td>
+        <td><%= alunos.status %></td>
+        <td>
+            <form method="POST" action="/principal/delete" style="display: inline;" >
+                <input type="hidden" name="id" value="<%= alunos.id %>">
+                <button type="submit">Deletar</button>
+            </form> 
+             <a href="/principal/edit/<%= alunos.id %>" type="button">editar</a>            
+        </td>
+    </tr>
+    <%}) %>
+</table>
+<form action="/principal/cad" method="POST" id="form" style="display: none;">
+    <label for="nome">Nome</label>
+    <input type="text" name="nome" placeholder="Nome"><br>
+    <label for="cpf">CPF</label>
+    <input type="number" name="cpf" id="cpf" placeholder="99999999999"><br>
+    <label for="email">E-mail</label>
+    <input type="email" name="email" placeholder="Email"><br>
+    <label for="numero">Numero</label>
+    <input type="number" name="numero" placeholder="999999999"><br>
+    <label for="peso">Peso</label>
+    <input type="text" name="peso" placeholder="99.99"><br>
+    <label for="altura">Altura</label>
+    <input type="text" name="altura" placeholder="9.99"><br>
+    <label for="data_nasci">Data de nascimento</label>
+    <input type="date" name="data_nasci" id="data_nasci" placeholder="Data de nascimento"><br>
+    <label for="status">Status</label>
+    <input type="text" name="status" placeholder="On ou off"><br>
+    <input type="submit"  value="cadastrar">
+</form>
+<br><hr>
+
+
+<%- include('./partials/footer.ejs')%>
