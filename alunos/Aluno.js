@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize")
-const connection = require("../connection/connection")
-
+const connection = require("../connection/connection");
+const Treinador = require("../treinadores/treinador");
 const Aluno = connection.define('alunos',{
     cpf:{
         type:Sequelize.STRING,
@@ -47,5 +47,8 @@ const Aluno = connection.define('alunos',{
 
 }
 );
+Treinador.hasMany(Aluno,{
+    foreignKey: 'treinadorId'
+});
 Aluno.sync({force: false}).then(() => {});
-module.exports = Aluno
+module.exports = Aluno;

@@ -9,13 +9,21 @@
   "author": "mardson barboza",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parse": "^0.1.0",
     "body-parser": "^1.20.1",
+    "connect-flash": "^0.1.1",
     "ejs": "^3.1.8",
     "express": "^4.18.2",
+    "express-handlebars": "^6.0.7",
+    "express-session": "^1.17.3",
+    "flash": "^1.1.0",
+    "handlebars": "^4.7.7",
     "knex": "^2.4.2",
     "mysql": "^2.18.1",
     "mysql2": "^3.1.2",
-    "sequelize": "^6.28.0"
+    "path": "^0.12.7",
+    "sequelize": "^6.28.0",
+    "uuid4": "^2.0.3"
   }
 }
