@@ -5,7 +5,7 @@
 
 {{/each}}
 
-{{#each treinador}}
+
 <a type="button"  class="btn btn-primary" href="/principal/alunos">voltar </a>
 <div class="card-body">
 <form action="/principal/cad" method="POST" id="form" >
@@ -25,9 +25,7 @@
     <input type="date" name="data_nasci" id="data_nasci" ><br>
     <label for="status">Status</label><br>
     <input type="text" name="status"  value=""><br>
-    <input type="hidden" name="treinadorid" value="{{this.dataValue.id}}">
+   
     <input type="submit"  value="cadastrar">
 </form>
 </div>
-{{else}}
-{{/each}}

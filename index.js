@@ -22,6 +22,7 @@ connection
 //session
 app.use(session({
     secret: uuid(),
+    cookie:{maxAge:300000},
     resave: true,
     saveUninitialized: true
 }))

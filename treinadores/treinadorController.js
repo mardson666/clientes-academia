@@ -6,9 +6,7 @@ const bcrypt = require('bcryptjs')
 
 
 
-router.get('/logar',(req,res)=>{
-    res.render('login')
-})
+
 router.get('/registrar', (req,res)=>{
     res.render('registrar')
 })
@@ -59,9 +57,18 @@ router.post('/save', (req,res)=>{
     }
     
 })
+router.get('/logar',(req,res)=>{
+    res.render('login')
+})
+
 router.post('/authenticate',(req,res)=>{
+    var erros = []
     var login = req.body.login
     var senha = req.body.senha
+
+    if (login == undefined || login == "" || login == null) {
+        erros.push("error_msg","Usuario ou senha não foram preenchidos")
+    }
    Treinador.findOne({where:{login:login}}).then(treinador=>{
         if (treinador != undefined) {
             var corrent = bcrypt.compareSync(senha,treinador.senha)
@@ -76,14 +83,14 @@ router.post('/authenticate',(req,res)=>{
                 res.redirect("/logar"); 
             }
         }else{
-            req.fresh("error_msg","usuario não existe")
+            req.flash("error_msg","usuario não existe")
             res.redirect("/logar"); 
         }
     })
 })
 router.get("/logout", (req, res) => {
-    req.session.user = undefined;
-    res.redirect("/");
+    req.session.Treinador = undefined;
+    res.redirect("/logar");
 })
 
 
