@@ -8,8 +8,9 @@ const flash = require('connect-flash')
 const path = require('path')
 const uuid = require('uuid4')
 
-const treinadorController = require('./treinadores/treinadorController')
-const alunosController = require('./alunos/AlunosController')
+const measurementsController = require('./measurement/measurementController')
+const professionalController = require('./professional/professionalController')
+const usersController = require('./user/usersController')
 //database
 connection
     .authenticate()
@@ -47,9 +48,9 @@ app.use(express.static(path.join(__dirname, "public")))
 
 
 //Rotas
-app.use('/',alunosController)
-app.use('/',treinadorController)
-
+app.use('/',usersController)
+app.use('/',professionalController)
+app.use('/',measurementsController)
 
 app.listen(8080,()=>{
     console.log('Serve devidadamente iniciado')

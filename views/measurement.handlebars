@@ -1,0 +1,77 @@
+
+{{#each erros}}
+	<div class="alert alert-danger">{{texto}}</div>
+
+{{else}}
+
+{{/each}}
+<h1>LISTA DE MEASUREMENT</h1>
+<button onclick="sumir()" class="btn btn-primary" id="mudar">cadastrar medição</button>
+
+<table class="table" id="table">
+  <thead>
+    <tr>
+        <th scope="col">height</th>
+        <th scope="col">weight</th>
+        <th scope="col">imc</th>
+        <th scope="col">bust</th>
+        <th scope="col">calf</th>
+        <th scope="col">hip</th>
+        <th scope="col">biceps</th>
+        <th scope="col">thigh</th>
+        <th scope="col">options</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each measurement}}
+    <tr>
+      <td>{{this.dataValues.height}}</td>
+      <td>{{this.dataValues.weight}}</td>
+      <td>{{this.dataValues.imc}}</td>
+      <td>{{this.dataValues.bust}}</td>
+      <td>{{this.dataValues.calf}}</td>
+      <td>{{this.dataValues.hip}}</td>
+      <td>{{this.dataValues.biceps}}</td>
+      <td>{{this.dataValues.thigh}}</td>
+      <td>
+      
+			<a href="/measurement/{{this.dataValues.id}}" class="btn btn-primary">medições do corpo</a>
+			<form action="/measurement/delete" method="POST">
+      <input type="hidden" name="id" value="{{this.dataValues.id}}">
+			<button type="submit" class="btn btn-danger">Excluir medição</button>
+			</form>
+            <a href="/measurement/edit/{{this.dataValues.id}}"><button class="btn btn-success" id="edit">Editar medição</button></a>
+
+      </td>
+      
+    </tr>
+    <tr>
+    {{else}}
+        <p>ainda não foi registrado as medições</p>
+    {{/each}}
+    </tr>
+  </tbody>
+</table>
+{{#each user}}
+<form action="/measurament/create/:id" method="post" id="form" style="display:none;">
+  <label for="">height</label><br>
+  <input type="text" name="height" id=""><br>
+  <label for="">weight</label><br>
+  <input type="text" name="weight" id=""><br>
+  <label for="">imc</label><br>
+  <input type="text" name="imc" id=""><br>
+  <label for="">bust</label><br>
+  <input type="text" name="bust" id=""><br>
+  <label for="">calf</label><br>
+  <input type="text" name="calf" id=""><br>
+  <label for="">hip</label><br>
+  <input type="text" name="hip" id=""><br>
+  <label for="">biceps</label><br>
+  <input type="text" name="biceps" id=""><br>
+  <label for="">thigh</label><br>
+  <input type="text" name="thigh" id=""><br>
+  <input type="hidden" name="userId" value="{{this.dataValues.id}}">
+  <button type="submit" class="btn btn-primary">Cadastrar</button>
+</form>
+{{else}}
+{{/each}}

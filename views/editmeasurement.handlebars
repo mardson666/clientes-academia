@@ -1,0 +1,24 @@
+
+
+{{#each measurement}}
+<form action="/measurament/edit" method="post" id="form" style="display:none;">
+  <label for="">height</label><br>
+  <input type="text" name="height" id="" value="{{this.dataValues.height}}"><br>
+  <label for="">weight</label><br>
+  <input type="text" name="weight" id="" value="{{this.dataValues.weight}}"><br>
+  <label for="">imc</label><br>
+  <input type="text" name="imc" id="" value="{{this.dataValues.imc}}"><br>
+  <label for="">bust</label><br>
+  <input type="text" name="bust" id="" value="{{this.dataValues.bust}}"><br>
+  <label for="">calf</label><br>
+  <input type="text" name="calf" id="" value="{{this.dataValues.calf}}"><br>
+  <label for="">hip</label><br>
+  <input type="text" name="hip" id="" value="{{this.dataValues.hip}}"><br>
+  <label for="">biceps</label><br>
+  <input type="text" name="biceps" id="" value="{{this.dataValues.biceps}}"><br>
+  <label for="">thigh</label><br>
+  <input type="text" name="thigh" id="" value="{{this.dataValues.thigh}}"><br>
+  <input type="hidden" name="userId" value="{{this.dataValues.userId}}">
+  <button type="submit" class="btn btn-primary">Cadastrar</button>
+</form>
+{{/each}}

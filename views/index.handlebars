@@ -10,24 +10,24 @@
 
 {{/each}}
 
-{{#each alunos}}
+{{#each user}}
 
-<div class="card mt-2" id="card" onclick="sumir()">
+<div class="card mt-2" id="card" >
 		<div class="card-body">
-			<h3>{{this.dataValues.id}}-{{this.dataValues.nome}}</h3>
+			<h3>{{this.dataValues.id}}-{{this.dataValues.name}}</h3>
 			<p>CPF:{{this.dataValues.cpf}}</p>
-			<p>NUMERO: {{this.dataValues.numero}}</p>
-            <P>PESO:{{this.dataValues.peso}}</P>
-            <p>ALTURA:{{this.dataValues.altura  }}</p>
+			<p>NUMERO: {{this.dataValues.number}}</p>
             <p>IMC:{{this.dataValues.imc}}</p>
             <p>DATA DE NASCIMENTO:{{this.dataValues.data_nasci}}</p>
             <p>EMAIL:{{this.dataValues.email}}</p>
             <p>STATUS:{{this.dataValues.status}}</p>
-			<br><a href="/principal/edit/{{this.dataValues.id}}"><button class="btn btn-success mt-4" >Editar exercicio</button></a>
+			<br><a href="/principal/edit/{{this.dataValues.id}}" class="btn btn-success">Editar aluno</a><br>
+			<a href="/measurement/{{this.dataValues.id}}" class="btn btn-primary">medições do corpo</a><br>
 			<form action="/principal/delete" method="POST">
 				<input type="hidden" name="id" value="{{this.dataValues.id}}">
-				<button type="submit" class="btn btn-danger mt-3">Excluir exercicio</button>
+				<button type="submit" class="btn btn-danger">Excluir aluno</button>
 			</form>
+			<a href="" class="btn btn-primary">Criar exercicio para este aluno</a>
 		</div>
 	</div>
 <br>

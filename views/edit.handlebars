@@ -6,22 +6,20 @@
 {{/each}}
 <div class="card-body">
 <form action="/principal/upadate" method="POST" id="form" >
-    <label for="nome">Nome</label>
-    <input type="text" name="nome" value="{{alunos.dataValues.nome}}"><br>
+    <label for="name">Nome</label>
+    <input type="text" name="name" value="{{user.dataValues.nome}}"><br>
     <label for="cpf">CPF</label>
-    <input type="text" name="cpf" id="cpf"  value="{{alunos.dataValues.cpf}}"><br>
+    <input type="text" name="cpf" id="cpf"  value="{{user.dataValues.cpf}}"><br>
     <label for="email">E-mail</label>
-    <input type="email" name="email"  value="{{alunos.dataValues.email}}"><br>
-    <label for="numero">Numero</label>
-    <input type="text" name="numero"  value="{{alunos.dataValues.numero}}"><br>
-    <label for="peso">Peso</label>
-    <input type="text" name="peso"  value="{{alunos.dataValues.peso}}"><br>
-    <label for="altura">Altura</label>
-    <input type="text" name="altura"  value="{{alunos.dataValues.altura}}"><br>
+    <input type="email" name="email"  value="{{user.dataValues.email}}"><br>
+    <label for="number">Numero</label>
+    <input type="text" name="number"  value="{{user.dataValues.numero}}"><br>
     <label for="data_nasci">Data de nascimento</label>
-    <input type="date" name="data_nasci" id="data_nasci"  value="{{alunos.dataValues.data_nasci}}"><br>
+    <input type="date" name="data_nasci" id="data_nasci"  value="{{user.dataValues.data_nasci}}"><br>
     <label for="status">Status</label>
-    <input type="text" name="status"  value="{{alunos.dataValues.status}}"><br>
+    <label for="objective">objetivo</label>
+    <input type="text" name="objective" value="{{user.dataValues.objective}}">
+    <input type="text" name="status"  value="{{user.dataValues.status}}"><br>
     <input type="submit"  value="cadastrar">
 </form>
 </div>
