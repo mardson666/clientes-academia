@@ -1,0 +1,37 @@
+{{#each erros}}
+	<div class="alert alert-danger">{{texto}}</div>
+
+{{else}}
+
+{{/each}}
+
+<h1>Cadastro de exercicios</h1>
+<p>cadastre seus exercicios antes de criar os treinos dos seus alunos</p>
+<a href="/principal/alunos" class="btn btn-primary">voltar</a>
+{{#each exercise}}
+<div class="card" style="width: 18rem;" id="update"> 
+  <div class="card-body">
+    <h5 class="card-title">{{this.dataValues.name}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{this.dataValues.category}}</h6>
+    <p class="card-text">{{this.dataValues.description}}</p>
+    <form action="/exercises/delete" method="post">
+      <input type="hidden" name="id" value="{{this.dataValues.id}}">
+      <button type="submit" class="btn btn-primary">excluir</button>
+    </form>
+    <a href="#" class="card-link">editar exercicio</a>
+  </div>
+</div>
+
+{{else}}
+<p>ainda não foi registrado um exercicio</p>
+{{/each}}
+
+<form action="/exercises/save" method="post" id="table" style="display:block;">
+  <label for="name">Nome</label><br>
+  <input type="text" name="name" id=""><br>
+  <label for="category">Categoria</label><br>
+  <input type="text" name="category" id=""><br>
+  <label for="description">Descrição</label><br>
+  <input type="text" name="description" id=""><br>
+  <button type="submit" class="btn btn-primary">cadastrar</button>
+</form>

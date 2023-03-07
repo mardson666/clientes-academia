@@ -2,6 +2,7 @@
 
 
 <a type="button"  class="btn btn-primary" href="/principal/cadastro">cadastrar </a>
+<a href="/exercises" class="btn btn-primary">Cadastrar exercicios</a>
 <a href="/logout"><button type="button" class="btn btn-outline-dark">Sair da sessão</button></a>
 {{#each erros}}
 	<div class="alert alert-danger">{{texto}}</div>
@@ -12,7 +13,7 @@
 
 {{#each user}}
 
-<div class="card mt-2" id="card" >
+<div class="card mt-2" id="card" style="width: 18rem;" >
 		<div class="card-body">
 			<h3>{{this.dataValues.id}}-{{this.dataValues.name}}</h3>
 			<p>CPF:{{this.dataValues.cpf}}</p>
@@ -27,7 +28,7 @@
 				<input type="hidden" name="id" value="{{this.dataValues.id}}">
 				<button type="submit" class="btn btn-danger">Excluir aluno</button>
 			</form>
-			<a href="" class="btn btn-primary">Criar exercicio para este aluno</a>
+			<a href="/training/cad/{{this.dataValues.id}}" class="btn btn-primary">Criar treino para este aluno</a>
 		</div>
 	</div>
 <br>

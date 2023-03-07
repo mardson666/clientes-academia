@@ -8,6 +8,9 @@ const flash = require('connect-flash')
 const path = require('path')
 const uuid = require('uuid4')
 
+const trainingexerciseController = require('./training_relationship/trainingexerciseController')
+const trainingController = require("./training/trainingController")
+const exerciseController = require('./exercise/exerciseController')
 const measurementsController = require('./measurement/measurementController')
 const professionalController = require('./professional/professionalController')
 const usersController = require('./user/usersController')
@@ -48,6 +51,9 @@ app.use(express.static(path.join(__dirname, "public")))
 
 
 //Rotas
+app.use('/',trainingexerciseController)
+app.use('/',trainingController)
+app.use('/',exerciseController)
 app.use('/',usersController)
 app.use('/',professionalController)
 app.use('/',measurementsController)

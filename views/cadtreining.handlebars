@@ -1,0 +1,39 @@
+{{#each erros}}
+	<div class="alert alert-danger">{{texto}}</div>
+
+{{else}}
+
+{{/each}}
+
+
+<h1>treinos</h1>
+<a href="/principal/alunos" class="btn btn-primary">voltar</a>
+{{#each training}}
+<div class="card" style="width: 18rem;" id="update"> 
+  <div class="card-body">
+    <h5 class="card-title">{{this.dataValues.name}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{this.dataValues.data_treino}}</h6>
+    <p class="card-text">{{this.dataValues.observation}}</p>
+    <form action="/exercises/delete" method="post">
+      <input type="hidden" name="id" value="{{this.dataValues.id}}">
+      <button type="submit" class="btn btn-primary">excluir</button>
+    </form>
+    <a href="#" class="card-link">editar treino</a>
+    <a href="/training/exercise/{{this.dataValues.id}}" class="card-link">cadastrar exercicios nesse treino</a>
+  </div>
+</div>
+
+
+{{/each}}
+{{#each user}}
+<form action="/training/save" method="post" id="table" style="display:block;">
+  <label for="name">Nome</label><br>
+  <input type="text" name="name" id=""><br>
+  <label for="observation">Observação</label><br>
+  <input type="text" name="observation" id=""><br>
+  <label for="data_treino">data do treino</label><br>
+  <input type="text" name="data_treino" id=""><br>
+  <input type="hidden" name="userId"  value="{{this.dataValues.id}}">
+  <button type="submit" class="btn btn-primary">cadastrar</button>
+</form>
+{{/each}}

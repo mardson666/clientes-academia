@@ -1,0 +1,33 @@
+{{#each erros}}
+	<div class="alert alert-danger">{{texto}}</div>
+
+{{else}}
+
+{{/each}}
+<h1>Cadastro de exercicio ao treino</h1>
+
+{{#each training}}
+<a href="/training/cad/{{this.dataValues.id}}" class="btn btn-primary">voltar</a>
+<div class="card" style="width: 18rem;" id="update"> 
+  <div class="card-body">
+    <h5 class="card-title">{{this.dataValues.name}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{this.dataValues.data_treino}}</h6>
+    <p class="card-text">{{this.dataValues.observation}}</p>
+</div>
+
+{{/each}}
+<hr>
+
+<form action="/training/exercise/save" method="post">
+  {{#each exercise}}
+    <label for="">{{this.dataValues.name}}</label>
+    <input type="checkbox" name="exercise" id="" value="{{this.dataValues.id}}">
+    {{/each}}
+    {{#each training}}
+    <input type="hidden" name="training" value="{{this.dataValues.id}}">
+    {{/each}}
+    <button type="submit" class="btn btn-primary">cadastrar</button>
+    
+</form>
+
+
